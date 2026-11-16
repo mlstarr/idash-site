@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-16T22:46:49Z",
+  "generated_at": "2026-11-16T22:53:41Z",
   "run_date": "2026-11-16",
   "tickers": [
     {
       "ticker": "ACHR",
       "last_close": 3.74,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 983,
+      "close_fact_id": 1071,
       "forecast": {
         "horizon_days": 7,
         "q10": 3.3093,
@@ -18,8 +18,8 @@
       "iv_near_days": 4,
       "iv_atm": 0.7805,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 63.6,
+      "iv_history_weeks": 12,
+      "iv_rank": 58.3,
       "iv_rv_ratio": 1.15
     },
     {
@@ -28,7 +28,7 @@
       "earnings_in_days": 0,
       "last_close": 28.58,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 987,
+      "close_fact_id": 1075,
       "forecast": {
         "horizon_days": 7,
         "q10": 24.0204,
@@ -41,8 +41,8 @@
       "iv_atm": 1.0745,
       "iv_days_to_expiry": 32,
       "earnings_before_expiry": true,
-      "iv_history_weeks": 12,
-      "iv_rank": 50.0,
+      "iv_history_weeks": 13,
+      "iv_rank": 46.2,
       "iv_rv_ratio": 1.12,
       "covered_call": {
         "realized_vol_used": 0.963,
@@ -63,7 +63,7 @@
       "ticker": "AVAV",
       "last_close": 109.5,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 991,
+      "close_fact_id": 1079,
       "forecast": {
         "horizon_days": 7,
         "q10": 97.6372,
@@ -75,15 +75,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.871,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 100.0,
+      "iv_history_weeks": 12,
+      "iv_rank": 91.7,
       "iv_rv_ratio": 1.37
     },
     {
       "ticker": "CRSP",
       "last_close": 40.37,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 995,
+      "close_fact_id": 1083,
       "forecast": {
         "horizon_days": 7,
         "q10": 36.5264,
@@ -95,15 +95,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.5769,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 45.5,
+      "iv_history_weeks": 12,
+      "iv_rank": 41.7,
       "iv_rv_ratio": 1.04
     },
     {
       "ticker": "FLY",
       "last_close": 22.48,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 999,
+      "close_fact_id": 1087,
       "forecast": {
         "horizon_days": 7,
         "q10": 18.5001,
@@ -115,15 +115,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.8997,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 27.3,
+      "iv_history_weeks": 12,
+      "iv_rank": 25.0,
       "iv_rv_ratio": 0.83
     },
     {
       "ticker": "IONQ",
       "last_close": 26.45,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1003,
+      "close_fact_id": 1091,
       "forecast": {
         "horizon_days": 7,
         "q10": 22.4883,
@@ -135,15 +135,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.7881,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 27.3,
+      "iv_history_weeks": 12,
+      "iv_rank": 25.0,
       "iv_rv_ratio": 0.88
     },
     {
       "ticker": "IPX",
       "last_close": 12.85,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1007,
+      "close_fact_id": 1095,
       "forecast": {
         "horizon_days": 7,
         "q10": 10.931,
@@ -157,7 +157,7 @@
       "ticker": "JOBY",
       "last_close": 4.72,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1009,
+      "close_fact_id": 1097,
       "forecast": {
         "horizon_days": 7,
         "q10": 4.2678,
@@ -169,15 +169,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.6486,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 81.8,
+      "iv_history_weeks": 12,
+      "iv_rank": 75.0,
       "iv_rv_ratio": 1.16
     },
     {
       "ticker": "KTOS",
       "last_close": 31.66,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1013,
+      "close_fact_id": 1101,
       "forecast": {
         "horizon_days": 7,
         "q10": 28.7285,
@@ -189,7 +189,7 @@
       "iv_near_days": 4,
       "iv_atm": 0.5977,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 12,
+      "iv_history_weeks": 13,
       "iv_rank": 0.0,
       "iv_rv_ratio": 1.11
     },
@@ -197,7 +197,7 @@
       "ticker": "LEU",
       "last_close": 97.53,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1017,
+      "close_fact_id": 1105,
       "forecast": {
         "horizon_days": 7,
         "q10": 83.1803,
@@ -209,8 +209,8 @@
       "iv_near_days": 4,
       "iv_atm": 0.8392,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 72.7,
+      "iv_history_weeks": 12,
+      "iv_rank": 66.7,
       "iv_rv_ratio": 0.95
     },
     {
@@ -219,7 +219,7 @@
       "earnings_in_days": 2,
       "last_close": 11.73,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1021,
+      "close_fact_id": 1109,
       "forecast": {
         "horizon_days": 7,
         "q10": 9.8812,
@@ -232,7 +232,7 @@
       "iv_atm": 0.9101,
       "iv_days_to_expiry": 32,
       "earnings_before_expiry": true,
-      "iv_history_weeks": 11,
+      "iv_history_weeks": 12,
       "iv_rank": 0.0,
       "iv_rv_ratio": 0.96
     },
@@ -240,7 +240,7 @@
       "ticker": "OKLO",
       "last_close": 23.03,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1025,
+      "close_fact_id": 1113,
       "forecast": {
         "horizon_days": 7,
         "q10": 19.5287,
@@ -252,8 +252,8 @@
       "iv_near_days": 4,
       "iv_atm": 0.8204,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 9.1,
+      "iv_history_weeks": 12,
+      "iv_rank": 8.3,
       "iv_rv_ratio": 0.9
     },
     {
@@ -262,7 +262,7 @@
       "earnings_in_days": 0,
       "last_close": 4.71,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1029,
+      "close_fact_id": 1117,
       "forecast": {
         "horizon_days": 7,
         "q10": 4.0387,
@@ -275,7 +275,7 @@
       "iv_atm": 0.8124,
       "iv_days_to_expiry": 32,
       "earnings_before_expiry": true,
-      "iv_history_weeks": 11,
+      "iv_history_weeks": 12,
       "iv_rank": 0.0,
       "iv_rv_ratio": 0.95
     },
@@ -283,7 +283,7 @@
       "ticker": "PL",
       "last_close": 12.72,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1033,
+      "close_fact_id": 1121,
       "forecast": {
         "horizon_days": 7,
         "q10": 11.1442,
@@ -295,15 +295,15 @@
       "iv_near_days": 4,
       "iv_atm": 1.0493,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 54.5,
+      "iv_history_weeks": 12,
+      "iv_rank": 50.0,
       "iv_rv_ratio": 1.43
     },
     {
       "ticker": "PLTR",
       "last_close": 160.39,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1037,
+      "close_fact_id": 1125,
       "forecast": {
         "horizon_days": 7,
         "q10": 146.3068,
@@ -315,15 +315,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.5143,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 63.6,
+      "iv_history_weeks": 12,
+      "iv_rank": 58.3,
       "iv_rv_ratio": 1.01
     },
     {
       "ticker": "QBTS",
       "last_close": 8.67,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1041,
+      "close_fact_id": 1129,
       "forecast": {
         "horizon_days": 7,
         "q10": 7.4732,
@@ -335,8 +335,8 @@
       "iv_near_days": 4,
       "iv_atm": 0.7779,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 9.1,
+      "iv_history_weeks": 12,
+      "iv_rank": 8.3,
       "iv_rv_ratio": 0.95
     },
     {
@@ -345,7 +345,7 @@
       "earnings_in_days": 0,
       "last_close": 3.53,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1045,
+      "close_fact_id": 1133,
       "forecast": {
         "horizon_days": 7,
         "q10": 3.0226,
@@ -359,7 +359,7 @@
       "ticker": "RDW",
       "last_close": 7.05,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1047,
+      "close_fact_id": 1135,
       "forecast": {
         "horizon_days": 7,
         "q10": 6.0289,
@@ -371,8 +371,8 @@
       "iv_near_days": 4,
       "iv_atm": 0.8401,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 18.2,
+      "iv_history_weeks": 12,
+      "iv_rank": 16.7,
       "iv_rv_ratio": 0.97
     },
     {
@@ -381,7 +381,7 @@
       "earnings_in_days": 0,
       "last_close": 9.06,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1051,
+      "close_fact_id": 1139,
       "forecast": {
         "horizon_days": 7,
         "q10": 7.8077,
@@ -394,15 +394,15 @@
       "iv_atm": 0.8661,
       "iv_days_to_expiry": 32,
       "earnings_before_expiry": true,
-      "iv_history_weeks": 11,
-      "iv_rank": 9.1,
+      "iv_history_weeks": 12,
+      "iv_rank": 8.3,
       "iv_rv_ratio": 1.05
     },
     {
       "ticker": "RKLB",
       "last_close": 57.37,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1055,
+      "close_fact_id": 1143,
       "forecast": {
         "horizon_days": 7,
         "q10": 49.8133,
@@ -414,15 +414,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.7779,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 54.5,
+      "iv_history_weeks": 12,
+      "iv_rank": 50.0,
       "iv_rv_ratio": 0.99
     },
     {
       "ticker": "SMR",
       "last_close": 4.27,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1059,
+      "close_fact_id": 1147,
       "forecast": {
         "horizon_days": 7,
         "q10": 3.6081,
@@ -434,15 +434,15 @@
       "iv_near_days": 4,
       "iv_atm": 0.95,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
-      "iv_rank": 100.0,
+      "iv_history_weeks": 12,
+      "iv_rank": 91.7,
       "iv_rv_ratio": 1.02
     },
     {
       "ticker": "TEM",
       "last_close": 64.76,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1063,
+      "close_fact_id": 1151,
       "forecast": {
         "horizon_days": 7,
         "q10": 55.1124,
@@ -454,7 +454,7 @@
       "iv_near_days": 4,
       "iv_atm": 0.804,
       "iv_days_to_expiry": 32,
-      "iv_history_weeks": 11,
+      "iv_history_weeks": 12,
       "iv_rank": 0.0,
       "iv_rv_ratio": 0.9
     },
@@ -462,7 +462,7 @@
       "ticker": "UUUU",
       "last_close": 6.04,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1067,
+      "close_fact_id": 1155,
       "forecast": {
         "horizon_days": 7,
         "q10": 5.3798,
@@ -476,7 +476,7 @@
       "ticker": "XNDU",
       "last_close": 2.03,
       "last_close_date": "2026-11-16",
-      "close_fact_id": 1069,
+      "close_fact_id": 1157,
       "forecast": {
         "horizon_days": 7,
         "q10": 1.6898,
@@ -496,6 +496,6 @@
   "scoring": {
     "scored_total": 48,
     "mean_rel_pinball_loss": 0.03630615544267578,
-    "scored_this_run": 48
+    "scored_this_run": 0
   }
 }
