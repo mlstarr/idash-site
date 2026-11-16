@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>idash</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1b1b1f; --muted:#6b6b76; --line:#dedee4; --warn:#b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121214; --fg:#ececf1; --muted:#9a9aa6; --line:#2c2c33; --warn:#ff8a80; }
+  }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--fg);
+         font:15px/1.5 system-ui, sans-serif; max-width:760px; margin-inline:auto; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  .muted { color:var(--muted); font-size:13px; }
+  table { width:100%; border-collapse:collapse; margin:16px 0; }
+  th, td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); }
+  th { font-size:12px; color:var(--muted); font-weight:600; }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .warn { color:var(--warn); }
+  ul { padding-left:18px; }
+</style>
+</head>
+<body>
+<h1>idash</h1>
+<div class="muted" id="stamp">Loading…</div>
+<div id="alerts"></div>
+<table>
+  <thead><tr>
+    <th>Ticker</th><th class="num">Weight</th><th class="num">Last close</th>
+    <th class="num">1-week range (10–90%)</th><th class="num">Implied vol (30d)</th><th class="num">Near-term IV</th><th class="num">Realized vol</th><th class="num">IV / RV</th><th class="num">Next earnings</th><th class="num">IV rank</th>
+  </tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+<div id="cc"></div>
+<div id="screen"></div>
+<div id="filings"></div>
+<div id="news"></div>
+<div id="scoring" class="muted"></div>
+<div id="errors" class="muted"></div>
+<script>
+const fmt = (v, d = 2) => (v === null || v === undefined) ? "n/a" : Number(v).toFixed(d);
+function cell(text, cls) { const td = document.createElement("td"); if (cls) td.className = cls; td.textContent = text; return td; }
+function renderCC(s) {
+  const root = document.getElementById("cc");
+  (s.tickers || []).filter(t => t.covered_call).forEach(t => {
+    const c = t.covered_call;
+    const h = document.createElement("h2"); h.textContent = "Covered calls: " + t.ticker; root.appendChild(h);
+    const m = document.createElement("p"); m.className = "muted";
+    m.textContent = (c.contracts_max !== undefined ? "Up to " + c.contracts_max + " contracts. " : "") +
+      "Model value uses " + (c.realized_vol_used * 100).toFixed(0) + "% realized vol; a strike qualifies only if the market pays " +
+      c.settings.min_edge_pct + "%+ over that value (delta ≤ " + c.settings.max_delta + "). " +
+      c.qualifying + " qualifying strikes. Never sell below the minimum premium.";
+    root.appendChild(m);
+    if (!c.top.length) { const n = document.createElement("p"); n.textContent = "Nothing qualifies right now: no covered call is the recommendation."; root.appendChild(n); return; }
+    const tb = document.createElement("table");
+    tb.innerHTML = "<thead><tr><th>Expiry</th><th class='num'>Strike</th><th class='num'>Delta</th><th class='num'>Bid / Ask</th><th class='num'>Model value</th><th class='num'>Edge</th><th class='num'>Min premium</th><th class='num'>Yield (ann.)</th><th>Note</th></tr></thead>";
+    const body = document.createElement("tbody");
+    c.top.forEach(r => {
+      const tr = document.createElement("tr");
+      [r.expiry + " (" + r.days + "d)", r.strike, r.delta, r.bid + " / " + r.ask, r.model_value, r.edge_pct + "%",
+       r.min_premium, r.yield_pct + "% (" + r.annualized_yield_pct + "%)",
+       r.earnings_before_expiry ? "⚠ earnings before expiry" : ""].forEach((v, i) => tr.appendChild(cell(String(v), i && i < 8 ? "num" : "")));
+      body.appendChild(tr);
+    });
+    tb.appendChild(body); root.appendChild(tb);
+  });
+}
+fetch("data/screen.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(sc => {
+  if (!sc) return;
+  const root = document.getElementById("screen");
+  const h = document.createElement("h2"); h.textContent = "Entry screen: setups to research"; root.appendChild(h);
+  const note = document.createElement("p"); note.className = "muted";
+  note.textContent = "Ranks setup quality (catalyst timing and option pricing); it does not predict returns. Picks are logged and later graded against the other stocks screened. " + sc.stats.pool + " index names -> " + sc.stats.stage1 + " with a catalyst -> " + sc.stats.evaluated + " checked. Generated " + sc.generated_at + ".";
+  root.appendChild(note);
+  const tb = document.createElement("table");
+  tb.innerHTML = "<thead><tr><th>Ticker</th><th class='num'>Price</th><th>Why screened</th><th class='num'>Implied move</th><th class='num'>Big-day size</th><th>Options</th><th class='num'>Below 52w high</th><th class='num'>Score</th></tr></thead>";
+  const body = document.createElement("tbody");
+  const load = () => { try { return JSON.parse(localStorage.getItem("thesis") || "{}"); } catch (e) { return {}; } };
+  sc.picks.forEach(p => {
+    const tr = document.createElement("tr");
+    [p.ticker, "$" + p.price, (p.why_screened || []).join(", "), p.implied_move_pct + "%", p.big_day_pct + "%", p.tag, p.below_52w_high_pct + "%", p.score]
+      .forEach((v, i) => tr.appendChild(cell(String(v), [1, 3, 4, 6, 7].includes(i) ? "num" : "")));
+    body.appendChild(tr);
+    const d = document.createElement("tr"); const td = document.createElement("td"); td.colSpan = 8; td.className = "muted";
+    const r = p.range, c = p.call;
+    let txt = "Range to expiry (10-90%, no direction assumed): $" + r.low + " - $" + r.high + ".";
+    if (c) {
+      txt += " Call $" + c.strike + " " + c.expiry + " costs $" + c.cost + "; break-even $" + c.breakeven + " (+" + c.breakeven_move_pct + "%). Chance of finishing above break-even: " + c.p_above_breakeven_hist_pct + "% on the stock's own history" + (c.p_above_breakeven_implied_pct != null ? ", " + c.p_above_breakeven_implied_pct + "% on option pricing" : "") + ". If the stock rose by 1x/2x/3x the implied move at expiry the call would be worth " + c.value_multiple_if_move_up["1x_implied_move"] + "x / " + c.value_multiple_if_move_up["2x_implied_move"] + "x / " + c.value_multiple_if_move_up["3x_implied_move"] + "x its cost; max loss is the premium.";
+    } else { txt += " No quoted call near +5%."; }
+    d.appendChild(td);
+    const span = document.createElement("span"); span.textContent = txt + " "; td.appendChild(span);
+    if (c) {
+      const t = load()[p.ticker] || {};
+      const tgt = document.createElement("input"); tgt.type = "number"; tgt.placeholder = "your target $"; tgt.value = t.target || ""; tgt.style.width = "8em";
+      const odds = document.createElement("input"); odds.type = "number"; odds.placeholder = "odds %"; odds.value = t.odds || ""; odds.style.width = "5em";
+      const out = document.createElement("span");
+      const calc = () => {
+        const T = parseFloat(tgt.value), O = parseFloat(odds.value);
+        try { const all = load(); all[p.ticker] = { target: tgt.value, odds: odds.value }; localStorage.setItem("thesis", JSON.stringify(all)); } catch (e) {}
+        if (!(T > 0) || !(O >= 0 && O <= 100)) { out.textContent = " Enter your target and odds to see expected value."; return; }
+        const win = Math.max(0, T - c.strike), ev = (O / 100) * win - c.cost;
+        out.textContent = " Your thesis: payoff at target $" + win.toFixed(2) + " vs cost $" + c.cost + " = " + (win / c.cost).toFixed(1) + "x; expected value per share $" + ev.toFixed(2) + " (" + (ev / c.cost * 100).toFixed(0) + "% of premium), assuming it expires worthless otherwise. These are your numbers, not a forecast from this system.";
+      };
+      tgt.addEventListener("input", calc); odds.addEventListener("input", calc); calc();
+      td.append(tgt, " ", odds, out);
+    }
+    d.appendChild(td); body.appendChild(d);
+  });
+  tb.appendChild(body); root.appendChild(tb);
+}).catch(() => {});
+fetch("data/filing_alerts.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(f => {
+  if (!f) return;
+  const root = document.getElementById("filings");
+  if (f.stale) {
+    const h0 = document.createElement("h2"); h0.textContent = "Filing alerts"; root.appendChild(h0);
+    const m = document.createElement("p"); m.className = "muted";
+    m.textContent = "Unavailable: the filing data source is out of date (newest filing it has is " + f.latest_filing_date + "). No news here does not mean nothing was filed.";
+    root.appendChild(m);
+    return;
+  }
+  const rows = [];
+  Object.values(f.alerts || {}).forEach(a => a.recent.forEach(x => rows.push({ t: a.ticker, shelf: a.shelf_filings_12m, ...x })));
+  if (!rows.length) return;
+  rows.sort((a, b) => (a.category === "dilution_watch" ? 0 : 1) - (b.category === "dilution_watch" ? 0 : 1) || b.filed.localeCompare(a.filed));
+  const h = document.createElement("h2"); h.textContent = "Filing alerts (last 3 weeks)"; root.appendChild(h);
+  const note = document.createElement("p"); note.className = "muted";
+  note.textContent = "Based on filing type only; the text is not read here. Offerings and shelf registrations (dilution watch) are listed first.";
+  root.appendChild(note);
+  const labels = { dilution_watch: "⚠ dilution watch", periodic: "periodic report", event: "8-K event", ownership: "ownership filing" };
+  rows.forEach(x => {
+    const p = document.createElement("p");
+    const a = document.createElement("a"); a.href = x.url; a.rel = "noopener"; a.textContent = x.form + " " + x.filed;
+    p.append(x.t + " · " + labels[x.category] + (x.new ? " · NEW" : "") + (x.category === "dilution_watch" ? " · " + x.shelf + " offering/shelf filings in 12 mo" : "") + " · ", a);
+    root.appendChild(p);
+  });
+}).catch(() => {});
+fetch("data/catalysts.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(n => {
+  if (!n) return;
+  const root = document.getElementById("news");
+  const names = Object.keys(n.catalysts || {});
+  if (!names.length) return;
+  const h = document.createElement("h2"); h.textContent = "Filing catalysts"; root.appendChild(h);
+  const note = document.createElement("p"); note.className = "muted";
+  note.textContent = "From SEC filings. Each item quotes the filing word for word (checked by code) and was confirmed by a second pass. The positive/negative label is the model's interpretation, not a fact.";
+  root.appendChild(note);
+  names.forEach(t => {
+    n.catalysts[t].forEach(c => {
+      const p = document.createElement("p");
+      const a = document.createElement("a"); a.href = c.url; a.textContent = c.form + " " + c.filed; a.rel = "noopener";
+      p.append(t + " · " + c.category.replace(/_/g, " ") + " (" + c.direction + "): " + c.claim + " ", a);
+      root.appendChild(p);
+    });
+  });
+}).catch(() => {});
+fetch("data/summary.json", { cache: "no-store" })
+  .then(r => { if (!r.ok) throw new Error("summary.json not found yet"); return r.json(); })
+  .then(s => {
+    renderCC(s);
+    document.getElementById("stamp").textContent = "Run date " + s.run_date + " (generated " + s.generated_at + ")";
+    const alerts = document.getElementById("alerts");
+    (s.alerts || []).forEach(a => {
+      const p = document.createElement("p"); p.className = "warn";
+      const w = a.weight_pct !== undefined ? " is " + a.weight_pct + "% of the total (alert above " + a.threshold_pct + "%)" : " is above the " + a.threshold_pct + "% alert level";
+      p.textContent = "Concentration: " + a.ticker + w;
+      alerts.appendChild(p);
+    });
+    const rows = document.getElementById("rows");
+    (s.tickers || []).forEach(t => {
+      const tr = document.createElement("tr");
+      tr.appendChild(cell(t.ticker));
+      tr.appendChild(cell(t.weight_pct === undefined || t.weight_pct === null ? "n/a" : t.weight_pct + "%", "num"));
+      tr.appendChild(cell(fmt(t.last_close), "num"));
+      tr.appendChild(cell(t.forecast ? fmt(t.forecast.q10) + " – " + fmt(t.forecast.q90) : "n/a", "num"));
+      const pct = (v) => (v == null ? "—" : (v * 100).toFixed(0) + "%");
+      tr.appendChild(cell(pct(t.iv_atm), "num"));
+      tr.appendChild(cell(pct(t.iv_near), "num"));
+      tr.appendChild(cell(pct(t.realized_vol), "num"));
+      tr.appendChild(cell(t.iv_rv_ratio == null ? "—" : t.iv_rv_ratio.toFixed(2), "num"));
+      tr.appendChild(cell(t.next_earnings == null ? "—" : t.next_earnings + " (" + t.earnings_in_days + "d)" + (t.earnings_before_expiry ? " ⚠ before expiry" : ""), "num"));
+      tr.appendChild(cell(t.iv_rank == null ? "n/a (" + (t.iv_history_weeks || 0) + " wks)" : fmt(t.iv_rank, 0), "num"));
+      rows.appendChild(tr);
+    });
+    const sc = s.scoring || {};
+    document.getElementById("scoring").textContent =
+      "Forecasts scored so far: " + (sc.scored_total || 0) +
+      (sc.mean_rel_pinball_loss != null ? " (mean relative loss " + fmt(sc.mean_rel_pinball_loss, 4) + ")" : "");
+    if ((s.errors || []).length) {
+      const e = document.getElementById("errors");
+      e.textContent = "Data problems this run: " + s.errors.length;
+    }
+  })
+  .catch(err => { document.getElementById("stamp").textContent = err.message; });
+</script>
+</body>
+</html>

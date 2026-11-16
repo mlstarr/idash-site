@@ -1,0 +1,501 @@
+{
+  "generated_at": "2026-11-16T22:46:49Z",
+  "run_date": "2026-11-16",
+  "tickers": [
+    {
+      "ticker": "ACHR",
+      "last_close": 3.74,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 983,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 3.3093,
+        "q50": 3.74,
+        "q90": 4.2267
+      },
+      "realized_vol": 0.6777,
+      "iv_near": 1.0654,
+      "iv_near_days": 4,
+      "iv_atm": 0.7805,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 63.6,
+      "iv_rv_ratio": 1.15
+    },
+    {
+      "ticker": "ASTS",
+      "next_earnings": "2026-11-16",
+      "earnings_in_days": 0,
+      "last_close": 28.58,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 987,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 24.0204,
+        "q50": 28.58,
+        "q90": 34.0052
+      },
+      "realized_vol": 0.9628,
+      "iv_near": 1.3653,
+      "iv_near_days": 4,
+      "iv_atm": 1.0745,
+      "iv_days_to_expiry": 32,
+      "earnings_before_expiry": true,
+      "iv_history_weeks": 12,
+      "iv_rank": 50.0,
+      "iv_rv_ratio": 1.12,
+      "covered_call": {
+        "realized_vol_used": 0.963,
+        "event_jump_pct": 11.2,
+        "settings": {
+          "max_cover_pct": 30,
+          "max_delta": 0.2,
+          "min_edge_pct": 10
+        },
+        "top": [],
+        "qualifying": 0,
+        "problems": [
+          "2026-12-25: HTTPError"
+        ]
+      }
+    },
+    {
+      "ticker": "AVAV",
+      "last_close": 109.5,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 991,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 97.6372,
+        "q50": 109.5,
+        "q90": 122.8041
+      },
+      "realized_vol": 0.6352,
+      "iv_near": 0.9538,
+      "iv_near_days": 4,
+      "iv_atm": 0.871,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 100.0,
+      "iv_rv_ratio": 1.37
+    },
+    {
+      "ticker": "CRSP",
+      "last_close": 40.37,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 995,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 36.5264,
+        "q50": 40.37,
+        "q90": 44.618
+      },
+      "realized_vol": 0.5542,
+      "iv_near": 0.683,
+      "iv_near_days": 4,
+      "iv_atm": 0.5769,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 45.5,
+      "iv_rv_ratio": 1.04
+    },
+    {
+      "ticker": "FLY",
+      "last_close": 22.48,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 999,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 18.5001,
+        "q50": 22.48,
+        "q90": 27.3161
+      },
+      "realized_vol": 1.0794,
+      "iv_near": 1.1102,
+      "iv_near_days": 4,
+      "iv_atm": 0.8997,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 27.3,
+      "iv_rv_ratio": 0.83
+    },
+    {
+      "ticker": "IONQ",
+      "last_close": 26.45,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1003,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 22.4883,
+        "q50": 26.45,
+        "q90": 31.1096
+      },
+      "realized_vol": 0.8989,
+      "iv_near": 0.9457,
+      "iv_near_days": 4,
+      "iv_atm": 0.7881,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 27.3,
+      "iv_rv_ratio": 0.88
+    },
+    {
+      "ticker": "IPX",
+      "last_close": 12.85,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1007,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 10.931,
+        "q50": 12.85,
+        "q90": 15.1058
+      },
+      "realized_vol": 0.896,
+      "no_options": true
+    },
+    {
+      "ticker": "JOBY",
+      "last_close": 4.72,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1009,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 4.2678,
+        "q50": 4.72,
+        "q90": 5.2201
+      },
+      "realized_vol": 0.5579,
+      "iv_near": 0.6713,
+      "iv_near_days": 4,
+      "iv_atm": 0.6486,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 81.8,
+      "iv_rv_ratio": 1.16
+    },
+    {
+      "ticker": "KTOS",
+      "last_close": 31.66,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1013,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 28.7285,
+        "q50": 31.66,
+        "q90": 34.8906
+      },
+      "realized_vol": 0.5383,
+      "iv_near": 0.676,
+      "iv_near_days": 4,
+      "iv_atm": 0.5977,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 12,
+      "iv_rank": 0.0,
+      "iv_rv_ratio": 1.11
+    },
+    {
+      "ticker": "LEU",
+      "last_close": 97.53,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1017,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 83.1803,
+        "q50": 97.53,
+        "q90": 114.3552
+      },
+      "realized_vol": 0.8816,
+      "iv_near": 0.8895,
+      "iv_near_days": 4,
+      "iv_atm": 0.8392,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 72.7,
+      "iv_rv_ratio": 0.95
+    },
+    {
+      "ticker": "LUNR",
+      "next_earnings": "2026-11-18",
+      "earnings_in_days": 2,
+      "last_close": 11.73,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1021,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 9.8812,
+        "q50": 11.73,
+        "q90": 13.9246
+      },
+      "realized_vol": 0.9501,
+      "iv_near": 1.1129,
+      "iv_near_days": 4,
+      "iv_atm": 0.9101,
+      "iv_days_to_expiry": 32,
+      "earnings_before_expiry": true,
+      "iv_history_weeks": 11,
+      "iv_rank": 0.0,
+      "iv_rv_ratio": 0.96
+    },
+    {
+      "ticker": "OKLO",
+      "last_close": 23.03,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1025,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 19.5287,
+        "q50": 23.03,
+        "q90": 27.1591
+      },
+      "realized_vol": 0.9136,
+      "iv_near": 0.8609,
+      "iv_near_days": 4,
+      "iv_atm": 0.8204,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 9.1,
+      "iv_rv_ratio": 0.9
+    },
+    {
+      "ticker": "ONDS",
+      "next_earnings": "2026-11-16",
+      "earnings_in_days": 0,
+      "last_close": 4.71,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1029,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 4.0387,
+        "q50": 4.71,
+        "q90": 5.4929
+      },
+      "realized_vol": 0.8518,
+      "iv_near": 1.0545,
+      "iv_near_days": 4,
+      "iv_atm": 0.8124,
+      "iv_days_to_expiry": 32,
+      "earnings_before_expiry": true,
+      "iv_history_weeks": 11,
+      "iv_rank": 0.0,
+      "iv_rv_ratio": 0.95
+    },
+    {
+      "ticker": "PL",
+      "last_close": 12.72,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1033,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 11.1442,
+        "q50": 12.72,
+        "q90": 14.5187
+      },
+      "realized_vol": 0.7327,
+      "iv_near": 0.8145,
+      "iv_near_days": 4,
+      "iv_atm": 1.0493,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 54.5,
+      "iv_rv_ratio": 1.43
+    },
+    {
+      "ticker": "PLTR",
+      "last_close": 160.39,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1037,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 146.3068,
+        "q50": 160.39,
+        "q90": 175.8288
+      },
+      "realized_vol": 0.5091,
+      "iv_near": 0.5761,
+      "iv_near_days": 4,
+      "iv_atm": 0.5143,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 63.6,
+      "iv_rv_ratio": 1.01
+    },
+    {
+      "ticker": "QBTS",
+      "last_close": 8.67,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1041,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 7.4732,
+        "q50": 8.67,
+        "q90": 10.0584
+      },
+      "realized_vol": 0.8229,
+      "iv_near": 1.0412,
+      "iv_near_days": 4,
+      "iv_atm": 0.7779,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 9.1,
+      "iv_rv_ratio": 0.95
+    },
+    {
+      "ticker": "RCAT",
+      "next_earnings": "2026-11-16",
+      "earnings_in_days": 0,
+      "last_close": 3.53,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1045,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 3.0226,
+        "q50": 3.53,
+        "q90": 4.1226
+      },
+      "realized_vol": 0.8596,
+      "no_options": true
+    },
+    {
+      "ticker": "RDW",
+      "last_close": 7.05,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1047,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 6.0289,
+        "q50": 7.05,
+        "q90": 8.2441
+      },
+      "realized_vol": 0.8668,
+      "iv_near": 0.842,
+      "iv_near_days": 4,
+      "iv_atm": 0.8401,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 18.2,
+      "iv_rv_ratio": 0.97
+    },
+    {
+      "ticker": "RGTI",
+      "next_earnings": "2026-11-16",
+      "earnings_in_days": 0,
+      "last_close": 9.06,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1051,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 7.8077,
+        "q50": 9.06,
+        "q90": 10.5131
+      },
+      "realized_vol": 0.824,
+      "iv_near": 0.8901,
+      "iv_near_days": 4,
+      "iv_atm": 0.8661,
+      "iv_days_to_expiry": 32,
+      "earnings_before_expiry": true,
+      "iv_history_weeks": 11,
+      "iv_rank": 9.1,
+      "iv_rv_ratio": 1.05
+    },
+    {
+      "ticker": "RKLB",
+      "last_close": 57.37,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1055,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 49.8133,
+        "q50": 57.37,
+        "q90": 66.073
+      },
+      "realized_vol": 0.7824,
+      "iv_near": 0.9291,
+      "iv_near_days": 4,
+      "iv_atm": 0.7779,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 54.5,
+      "iv_rv_ratio": 0.99
+    },
+    {
+      "ticker": "SMR",
+      "last_close": 4.27,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1059,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 3.6081,
+        "q50": 4.27,
+        "q90": 5.0534
+      },
+      "realized_vol": 0.9331,
+      "iv_near": 0.9119,
+      "iv_near_days": 4,
+      "iv_atm": 0.95,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 100.0,
+      "iv_rv_ratio": 1.02
+    },
+    {
+      "ticker": "TEM",
+      "last_close": 64.76,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1063,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 55.1124,
+        "q50": 64.76,
+        "q90": 76.0964
+      },
+      "realized_vol": 0.8936,
+      "iv_near": 0.866,
+      "iv_near_days": 4,
+      "iv_atm": 0.804,
+      "iv_days_to_expiry": 32,
+      "iv_history_weeks": 11,
+      "iv_rank": 0.0,
+      "iv_rv_ratio": 0.9
+    },
+    {
+      "ticker": "UUUU",
+      "last_close": 6.04,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1067,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 5.3798,
+        "q50": 6.04,
+        "q90": 6.7812
+      },
+      "realized_vol": 0.6412,
+      "no_options": true
+    },
+    {
+      "ticker": "XNDU",
+      "last_close": 2.03,
+      "last_close_date": "2026-11-16",
+      "close_fact_id": 1069,
+      "forecast": {
+        "horizon_days": 7,
+        "q10": 1.6898,
+        "q50": 2.03,
+        "q90": 2.4387
+      },
+      "realized_vol": 1.016,
+      "no_options": true
+    }
+  ],
+  "alerts": [
+    {
+      "ticker": "ASTS",
+      "threshold_pct": 30
+    }
+  ],
+  "scoring": {
+    "scored_total": 48,
+    "mean_rel_pinball_loss": 0.03630615544267578,
+    "scored_this_run": 48
+  }
+}

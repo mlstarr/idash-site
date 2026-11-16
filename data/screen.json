@@ -1,0 +1,63 @@
+{
+ "generated_at": "2026-11-15T22:27:40Z",
+ "stats": {
+  "pool": 2455,
+  "stage1": 90,
+  "evaluated": 54,
+  "skipped": {
+   "no usable options chain": 28,
+   "price below floor": 6,
+   "Tiingo returned no usable rows": 2
+  }
+ },
+ "picks": [
+  {
+   "ticker": "BBW",
+   "price": 29.4,
+   "earnings": "2026-12-04",
+   "earnings_in_days": 19,
+   "option_days": 33,
+   "implied_move_pct": 18.5,
+   "big_day_pct": 6.6,
+   "past_earnings_moves_n": 4,
+   "past_earnings_move_median_pct": 13.3,
+   "past_earnings_move_max_pct": 23.7,
+   "implied_vs_past_moves": 1.4,
+   "atm_spread_pct": 10.5,
+   "min_open_interest": 262,
+   "liquid": true,
+   "realized_vol": 0.84,
+   "below_52w_high_pct": 57.7,
+   "return_3m_pct": -22.3,
+   "range": {
+    "low": 19.53,
+    "mid": 29.4,
+    "high": 44.27,
+    "sigma_pct": 31.9
+   },
+   "call": {
+    "strike": 30,
+    "expiry": "2026-12-18",
+    "cost": 2,
+    "breakeven": 32,
+    "breakeven_move_pct": 8.8,
+    "p_above_breakeven_hist_pct": 39.5,
+    "max_loss": "100% of premium",
+    "p_above_breakeven_implied_pct": 34.9,
+    "value_multiple_if_move_up": {
+     "1x_implied_move": 2.43,
+     "2x_implied_move": 5.15,
+     "3x_implied_move": 7.88
+    }
+   },
+   "why_screened": [
+    "earnings in 19d"
+   ],
+   "score": 3.0,
+   "tag": "options rich vs past earnings moves: premium-selling candidate",
+   "notes": [
+    "implied 18.5% vs median past earnings move 13.3% (n=4)"
+   ]
+  }
+ ]
+}
