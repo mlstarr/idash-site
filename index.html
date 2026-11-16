@@ -71,16 +71,20 @@ fetch("data/screen.json", { cache: "no-store" }).then(r => r.ok ? r.json() : nul
   const root = document.getElementById("screen");
   const h = document.createElement("h2"); h.textContent = "Entry screen: setups to research"; root.appendChild(h);
   const note = document.createElement("p"); note.className = "muted";
-  note.textContent = "Ranks setup quality (catalyst timing and option pricing); it does not predict returns. Picks are logged and later graded against the other stocks screened. " + sc.stats.pool + " index names -> " + sc.stats.stage1 + " with a catalyst -> " + sc.stats.evaluated + " checked. Generated " + sc.generated_at + ".";
+  note.textContent = "Side compares what options charge for the earnings move with how far the stock has really moved after past reports: BUY SIDE means options are cheap relative to history, SELL SIDE means they are rich (useful for covered calls or cash-secured puts, not for buying calls). It does not predict whether the stock goes up. Chance call profits is the chance of finishing above the call's break-even, from the stock's history and from option prices. Picks are logged and later graded against the other stocks screened. " + sc.stats.pool + " index names -> " + sc.stats.stage1 + " with a catalyst -> " + sc.stats.evaluated + " checked. Generated " + sc.generated_at + ".";
   root.appendChild(note);
   const tb = document.createElement("table");
-  tb.innerHTML = "<thead><tr><th>Ticker</th><th class='num'>Price</th><th>Why screened</th><th class='num'>Implied move</th><th class='num'>Big-day size</th><th>Options</th><th class='num'>Below 52w high</th><th class='num'>Score</th></tr></thead>";
+  tb.innerHTML = "<thead><tr><th>Ticker</th><th class='num'>Price</th><th>Side</th><th>Why screened</th><th class='num'>Implied move</th><th class='num'>Past earnings move (median)</th><th class='num'>Chance call profits</th><th class='num'>Below 52w high</th></tr></thead>";
   const body = document.createElement("tbody");
   const load = () => { try { return JSON.parse(localStorage.getItem("thesis") || "{}"); } catch (e) { return {}; } };
   sc.picks.forEach(p => {
     const tr = document.createElement("tr");
-    [p.ticker, "$" + p.price, (p.why_screened || []).join(", "), p.implied_move_pct + "%", p.big_day_pct + "%", p.tag, p.below_52w_high_pct + "%", p.score]
-      .forEach((v, i) => tr.appendChild(cell(String(v), [1, 3, 4, 6, 7].includes(i) ? "num" : "")));
+    const rr = p.implied_vs_past_moves;
+    const side = rr == null ? "NO READ" : rr <= 0.9 ? "BUY SIDE: calls look cheap" : rr >= 1.2 ? "SELL SIDE: options rich" : "NEUTRAL: fairly priced";
+    const c0 = p.call;
+    const chance = c0 ? c0.p_above_breakeven_hist_pct + "% history" + (c0.p_above_breakeven_implied_pct != null ? " / " + c0.p_above_breakeven_implied_pct + "% options" : "") : "n/a";
+    [p.ticker, "$" + p.price, side, (p.why_screened || []).join(", "), p.implied_move_pct + "%", (p.past_earnings_move_median_pct != null ? p.past_earnings_move_median_pct + "% (n=" + p.past_earnings_moves_n + ")" : "n/a"), chance, p.below_52w_high_pct + "%"]
+      .forEach((v, i) => tr.appendChild(cell(String(v), [1, 4, 5, 6, 7].includes(i) ? "num" : "")));
     body.appendChild(tr);
     const d = document.createElement("tr"); const td = document.createElement("td"); td.colSpan = 8; td.className = "muted";
     const r = p.range, c = p.call;
